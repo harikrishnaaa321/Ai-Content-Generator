@@ -1,5 +1,4 @@
-"use client"; // Add this line at the top
-
+"use client"; 
 import React, { useContext, useState } from "react";
 import FormSection from "../_components/FormSection";
 import OutputSection from "../_components/OutputSection";
@@ -52,7 +51,7 @@ function CreateNewContent(props: PROPS) {
 
       setAiOutput(result?.response.text() || "No response");
       await SaveInDb(
-       formData,
+        JSON.stringify(formData), // Ensure formData is stringified
         selectedTemplate?.slug,
         result?.response.text() || "No response"
       );
@@ -72,19 +71,21 @@ function CreateNewContent(props: PROPS) {
 
   const SaveInDb = async (formData: any, slug: string | undefined, aiResp: string) => {
     try {
-      await db.insert(AIOutput).values({
-        formData: formData,
-        templateSlug: slug,
-        aiResponse: aiResp,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        createdAt: moment().format("DD/MM/YY"),
-      });
+      await db.insert(AIOutput).values([
+        {
+          formData: JSON.stringify(formData), // Make sure formData is a string
+          templateSlug: slug || '',
+          aiResponse: aiResp,
+          createdBy: user?.primaryEmailAddress?.emailAddress || '',
+          createdAt: moment().format("DD/MM/YY"),
+        }
+      ]);
     } catch (error) {
       console.error("Error saving to database:", error);
       alert("An error occurred while saving content. Please try again.");
     }
   };
-
+  
   return (
     <div className="p-10">
       <Link href={"/dashboard"}>
