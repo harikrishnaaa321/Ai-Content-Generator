@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { HiTemplate, HiPencilAlt, HiUser, HiSupport } from 'react-icons/hi';
