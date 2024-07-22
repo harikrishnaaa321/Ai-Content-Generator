@@ -27,8 +27,7 @@ const TemplateListSection = ({ userSearchInput }: TemplateListSectionProps) => {
   const [templateList, setTemplateList] = useState<TEMPLATE[]>(Templates);
 
   useEffect(() => {
-    // Ensure userSearchInput is a string
-    const searchInput = typeof userSearchInput === 'string' ? userSearchInput : '';
+    const searchInput = userSearchInput || ""; // Default to an empty string if undefined
 
     if (searchInput) {
       const filterData = Templates.filter((item) =>
