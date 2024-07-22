@@ -1,3 +1,5 @@
+"use client"; // Add this line at the top
+
 import React, { useContext, useState } from "react";
 import FormSection from "../_components/FormSection";
 import OutputSection from "../_components/OutputSection";
@@ -50,7 +52,7 @@ function CreateNewContent(props: PROPS) {
 
       setAiOutput(result?.response.text() || "No response");
       await SaveInDb(
-        JSON.stringify(formData), // Ensure formData is stringified
+       formData,
         selectedTemplate?.slug,
         result?.response.text() || "No response"
       );
@@ -65,6 +67,21 @@ function CreateNewContent(props: PROPS) {
       alert("An error occurred while generating content. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const SaveInDb = async (formData: any, slug: string | undefined, aiResp: string) => {
+    try {
+      await db.insert(AIOutput).values({
+        formData: formData,
+        templateSlug: slug,
+        aiResponse: aiResp,
+        createdBy: user?.primaryEmailAddress?.emailAddress,
+        createdAt: moment().format("DD/MM/YY"),
+      });
+    } catch (error) {
+      console.error("Error saving to database:", error);
+      alert("An error occurred while saving content. Please try again.");
     }
   };
 
