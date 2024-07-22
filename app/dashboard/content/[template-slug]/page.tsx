@@ -1,4 +1,3 @@
-"use client";
 import React, { useContext, useState } from "react";
 import FormSection from "../_components/FormSection";
 import OutputSection from "../_components/OutputSection";
@@ -35,10 +34,6 @@ function CreateNewContent(props: PROPS) {
   const { updateCreditUsage, setUpdateCreditUsage } = useContext(UpdateCreditUsageContext);
   const { userSubscription } = useContext(UserSubscriptionContext);
 
-  /**
-   * Generates AI content based on form data and saves it to the database.
-   * @param formData - The data submitted from the form.
-   */
   const GenerativeAIContent = async (formData: any) => {
     if (totalUsage >= 10000 && !userSubscription) {
       alert("Please upgrade your plan to continue.");
@@ -55,12 +50,11 @@ function CreateNewContent(props: PROPS) {
 
       setAiOutput(result?.response.text() || "No response");
       await SaveInDb(
-        JSON.stringify(formData),
+        JSON.stringify(formData), // Ensure formData is stringified
         selectedTemplate?.slug,
         result?.response.text() || "No response"
       );
 
-      // Ensure setUpdateCreditUsage is defined and a function
       if (typeof setUpdateCreditUsage === "function") {
         setUpdateCreditUsage(Date.now());
       } else {
@@ -71,27 +65,6 @@ function CreateNewContent(props: PROPS) {
       alert("An error occurred while generating content. Please try again.");
     } finally {
       setLoading(false);
-    }
-  };
-
-  /**
-   * Saves the generated AI content to the database.
-   * @param formData - The data submitted from the form.
-   * @param slug - The template slug.
-   * @param aiResp - The AI-generated response.
-   */
-  const SaveInDb = async (formData: any, slug: string | undefined, aiResp: string) => {
-    try {
-      await db.insert(AIOutput).values({
-        formData: formData,
-        templateSlug: slug,
-        aiResponse: aiResp,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        createdAt: moment().format("DD/MM/YY"),
-      });
-    } catch (error) {
-      console.error("Error saving to database:", error);
-      alert("An error occurred while saving content. Please try again.");
     }
   };
 
