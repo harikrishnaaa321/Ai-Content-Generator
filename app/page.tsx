@@ -1,4 +1,5 @@
-"use client"
+"use client"; // Add this line at the top
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { HiTemplate, HiPencilAlt, HiUser, HiSupport } from 'react-icons/hi';
@@ -6,13 +7,11 @@ import { HiTemplate, HiPencilAlt, HiUser, HiSupport } from 'react-icons/hi';
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-     
-      <header className="flex justify-between items-center p-4 bg-gradient-to-r from-orange-500 to-gray-700 text-white shadow-lg"> 
+      <header className="flex justify-between items-center p-4 bg-gradient-to-r from-orange-500 to-gray-700 text-white shadow-lg">
         <div className="flex items-center space-x-4 ml-10">
           <Image src="/logo.svg" alt="Logo" width={40} height={40} className="object-contain" />
           <h1 className="text-xl font-extrabold">Content Generator</h1>
         </div>
-   
         <div className="space-x-4">
           <a href="/dashboard">
             <Button className="bg-white text-orange-700 hover:bg-gray-200">Get Started</Button>
@@ -31,7 +30,6 @@ export default function Home() {
           </a>
         </div>
 
-     
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-4xl">
           <div className="flex flex-col items-center text-center p-4 border rounded-lg shadow-md bg-white">
             <HiTemplate className="text-4xl text-blue-500 mb-2" />
