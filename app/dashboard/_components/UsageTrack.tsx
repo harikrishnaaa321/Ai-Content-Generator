@@ -31,21 +31,28 @@ function UsageTrack() {
   }, [updateCreditUsage, user]);
 
   const GetData = async () => {
+    const email = user?.primaryEmailAddress?.emailAddress;
+    if (!email) return; // Ensure email is defined
+  
     const result = await db
       .select()
       .from(AIOutput)
-      .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress));
-
+      .where(eq(AIOutput.createdBy, email)); // Use email directly if it's guaranteed to be a string
+  
     // Filter out entries where aiResponse is null and update totalUsage
     const filteredResult: HISTORYPAGE[] = result.filter(item => item.aiResponse !== null) as HISTORYPAGE[];
     GetTotalUsage(filteredResult);
   };
-
+  
   const IsUserSubscribe = async () => {
+    const email = user?.primaryEmailAddress?.emailAddress;
+    if (!email) return; // Ensure email is defined
+  
     const result = await db
       .select()
       .from(UserSubscription)
-      .where(eq(UserSubscription.email, user?.primaryEmailAddress?.emailAddress));
+      .where(eq(UserSubscription.email, email)); // Use email directly if it's guaranteed to be a string
+  
     if (result.length > 0) {
       setUserSubscription(true);
       setMaxWords(1000000);
@@ -54,6 +61,7 @@ function UsageTrack() {
       setMaxWords(10000);
     }
   };
+  
 
   const GetTotalUsage = (result: HISTORYPAGE[]) => {
     let total: number = 0;
