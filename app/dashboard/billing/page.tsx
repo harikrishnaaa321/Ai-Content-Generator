@@ -8,12 +8,18 @@ import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { UserSubscriptionContext } from "@/app/(context)/UserSubscriptionContext";
 
+// Extend the Window interface to include Razorpay
+declare global {
+  interface Window {
+    Razorpay?: any;
+  }
+}
+
 function Billing() {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const { userSubscription, setUserSubscription } = useContext(UserSubscriptionContext);
 
-  // Load Razorpay script
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -32,7 +38,7 @@ function Billing() {
   const CreateSubscription = async () => {
     setLoading(true);
     try {
-      const resp = await axios.post("/api/create-subscription", {});
+      const resp = await axios.post<{ id: string }>("/api/create-subscription", {});
       OnPayment(resp.data.id);
     } catch (error) {
       console.error("Error creating subscription:", error);
@@ -41,7 +47,7 @@ function Billing() {
     }
   };
 
-  const OnPayment = (subId) => {
+  const OnPayment = (subId: string) => {
     if (!window.Razorpay) {
       console.error("Razorpay is not loaded");
       return;
@@ -52,10 +58,10 @@ function Billing() {
       subscription_id: subId,
       name: "AI Content Generator",
       description: "Monthly subscription",
-      handler: async (resp) => {
+      handler: async (resp: any) => { // Update this type according to Razorpay's response
         console.log(resp);
         if (resp) {
-          SaveSubscription(resp.razorpay_payment_id);
+          await SaveSubscription(resp.razorpay_payment_id);
         }
       },
       theme: {
@@ -63,21 +69,24 @@ function Billing() {
       },
     };
 
-    // Instantiate Razorpay
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
 
-  const SaveSubscription = async (paymentId) => {
-    const result = await db.insert(UserSubscription).values({
-      email: user?.primaryEmailAddress?.emailAddress,
-      userName: user?.fullName,
-      active: true,
-      paymentId: paymentId,
-      joinDate: moment().format("DD/MM/YY"),
-    });
-    console.log(result);
-    setUserSubscription({ ...userSubscription, active: true }); // Update the context with the new subscription status
+  const SaveSubscription = async (paymentId: string) => {
+    try {
+      const result = await db.insert(UserSubscription).values({
+        email: user?.primaryEmailAddress?.emailAddress || '',
+        username: user?.fullName || '', // Corrected to 'username'
+        active: true,
+        paymentId: paymentId,
+        joinDate: moment().format("DD/MM/YY"),
+      });
+      console.log(result);
+      setUserSubscription({ ...userSubscription, active: true });
+    } catch (error) {
+      console.error("Error saving subscription:", error);
+    }
   };
 
   return (
@@ -112,7 +121,7 @@ function Billing() {
           <h2 className="text-xl font-semibold mb-4">Upgrade Plan</h2>
           <p className="text-lg mb-4">1,000,000 Words/Month</p>
           <p className="text-gray-600 mb-6">
-            Upgrade to our premium plan for $99 per month and enjoy 1,000,000 words each month!
+            Upgrade to our premium plan for 999 per month and enjoy 1,000,000 words each month!
           </p>
           <button
             disabled={loading || userSubscription}
