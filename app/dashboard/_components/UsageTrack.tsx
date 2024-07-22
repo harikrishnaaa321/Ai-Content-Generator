@@ -31,11 +31,14 @@ function UsageTrack() {
   }, [updateCreditUsage, user]);
 
   const GetData = async () => {
-    const result: HISTORYPAGE[] = await db
+    const result = await db
       .select()
       .from(AIOutput)
       .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress));
-    GetTotalUsage(result);
+
+    // Filter out entries where aiResponse is null and update totalUsage
+    const filteredResult: HISTORYPAGE[] = result.filter(item => item.aiResponse !== null) as HISTORYPAGE[];
+    GetTotalUsage(filteredResult);
   };
 
   const IsUserSubscribe = async () => {
@@ -55,26 +58,31 @@ function UsageTrack() {
   const GetTotalUsage = (result: HISTORYPAGE[]) => {
     let total: number = 0;
     result.forEach((element) => {
-      total += Number(element.aiResponse?.length);
+      total += Number(element.aiResponse?.length || 0); // Handle null values
     });
     setTotalUsage(total);
     console.log(total);
   };
+
   return (
     <div className="m-5">
-      <div className="bg-primary text-white p-3 rounded-lg ">
+      <div className="bg-primary text-white p-3 rounded-lg">
         credits
         <div className="h-2 bg-[#7a70a1] w-full rounded-full mt-3">
           <div
             className="h-2 bg-white rounded-full"
-            style={{ width: (totalUsage/maxWords)*100 }}
+            style={{ width: `${(totalUsage / maxWords) * 100}%` }}
           ></div>
         </div>
-        <h2 className="text-sm my-2">{totalUsage}/{maxWords} used</h2>
-      </div><a href="/dashboard/billing">
-      <Button className="w-full mt-3 text-primary" variant={"secondary"}>
-        Upgrade
-      </Button></a>
+        <h2 className="text-sm my-2">
+          {totalUsage}/{maxWords} used
+        </h2>
+      </div>
+      <a href="/dashboard/billing">
+        <Button className="w-full mt-3 text-primary" variant={"secondary"}>
+          Upgrade
+        </Button>
+      </a>
     </div>
   );
 }

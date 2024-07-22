@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <div className="flex gap-5 items-center">
         <button className="bg-primary p-2 rounded-full text-xs text-white px-4 hover:bg-primary-dark transition duration-300">
-          Join membership just for $99/month
+          Join membership just for 99/month
         </button>
         <UserButton />
       </div>

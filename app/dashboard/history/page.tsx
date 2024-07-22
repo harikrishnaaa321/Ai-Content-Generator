@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Loader2Icon, Copy } from "lucide-react";
 
 export interface HISTORYPAGE{
-  id:Number,
-  formData:string,
-  aiResponse:string,
-  templateSlug:string,
-  createdBy:string,
-  createdAt:string
+  id: number;
+  formData: string;
+  aiResponse: string | null; // Allow aiResponse to be null
+  templateSlug: string;
+  createdBy: string;
+  createdAt: string | null;
 }
 const HistoryPage: React.FC = () => {
   const [history, setHistory] = useState<any[]>([]);

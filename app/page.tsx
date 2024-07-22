@@ -5,7 +5,7 @@ import { HiTemplate, HiPencilAlt, HiUser, HiSupport } from 'react-icons/hi';
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
+     
       <header className="flex justify-between items-center p-4 bg-gradient-to-r from-orange-500 to-gray-700 text-white shadow-lg"> 
         <div className="flex items-center space-x-4 ml-10">
           <Image src="/logo.svg" alt="Logo" width={40} height={40} className="object-contain" />
