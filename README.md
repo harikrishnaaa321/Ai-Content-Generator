@@ -27,11 +27,11 @@ The **AI Content Generator** is a tool designed to generate high-quality content
 ## Tech Stack
 
 - **Frontend**: Next.js
-- **Backend**: Next.js API Routes, PostgreSQL, PL/SQL
+- **Backend**: Next.js API Routes, PostgreSQL
 - **Database**: PostgreSQL
 - **Payment Gateway**: Razorpay
 - **API**: Gemini API for content generation
-- **Languages**: JavaScript, SQL, PL/SQL
+- **Languages**: JavaScript
 
 ## Installation
 
