@@ -22,6 +22,113 @@ The **AI Content Generator** is a tool designed to generate high-quality content
 - **Razorpay integration**: Simple and secure payment gateway integration for premium account subscriptions.
 - **PostgreSQL database**: Efficient data management for user details, content templates, and account limits.
 - **PL/SQL**: Efficient backend operations with robust data retrieval and management.
+
+- ## Available AI Tools
+
+### Blog Tools
+
+1. **Blog Title Generator**
+   - **Description**: An AI tool that generates blog titles based on your blog information.
+   - **Category**: Blog
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/4186/4186534.png)
+   - **Slug**: generate-blog-title
+
+2. **Blog Content Generator**
+   - **Description**: Generates engaging blog content based on the topic and outline you provide.
+   - **Category**: Blog
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/4905/4905454.png)
+   - **Slug**: blog-content-generation
+
+3. **Blog Topic Ideas**
+   - **Description**: Generates catchy and viral blog topic ideas based on a niche.
+   - **Category**: Blog
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/11497/11497847.png)
+   - **Slug**: blog-topic-idea
+
+### YouTube Tools
+
+1. **YouTube SEO Title Generator**
+   - **Description**: Generates SEO-optimized titles for YouTube videos based on keywords and outline.
+   - **Category**: YouTube Tools
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/402/402075.png)
+   - **Slug**: youtube-seo-title
+
+2. **YouTube Description Generator**
+   - **Description**: Generates engaging YouTube descriptions under 4-5 lines, with emojis based on the video topic and outline.
+   - **Category**: YouTube Tools
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/2111/2111748.png)
+   - **Slug**: youtube-description
+
+3. **YouTube Tag Generator**
+   - **Description**: Generates up to 10 optimized YouTube tags based on the title and outline you provide.
+   - **Category**: YouTube Tools
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/4674/4674918.png)
+   - **Slug**: youtube-tag
+
+### Rewriting Tools
+
+1. **Rewrite Article (Plagiarism-Free)**
+   - **Description**: Rewrites existing articles or blogs to be plagiarism-free and bypass AI detectors.
+   - **Category**: Rewriting Tools
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/3131/3131607.png)
+   - **Slug**: rewrite-article
+
+### Writing Assistant Tools
+
+1. **Text Improver**
+   - **Description**: Refines your writing by eliminating errors and improving tone, word choice, and readability.
+   - **Category**: Writing Assistant
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/1686/1686815.png)
+   - **Slug**: text-improver
+
+### Social Media Tools
+
+1. **Instagram Post Generator**
+   - **Description**: Generates Instagram post ideas based on given keywords.
+   - **Category**: Social Media
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/15713/15713420.png)
+   - **Slug**: instagram-post-generator
+
+2. **Instagram Hashtag Generator**
+   - **Description**: Generates up to 15 Instagram hashtags based on keywords.
+   - **Category**: Social Media
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/7045/7045432.png)
+   - **Slug**: instagram-hash-tag-generator
+
+### Coding Tools
+
+1. **Write Code**
+   - **Description**: AI model generates code in any language based on your description.
+   - **Category**: Coding
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/6062/6062646.png)
+   - **Slug**: write-code
+
+2. **Explain Code**
+   - **Description**: AI model explains code line by line in any language.
+   - **Category**: Coding
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/8488/8488751.png)
+   - **Slug**: explain-code
+
+3. **Code Bug Detector**
+   - **Description**: Detects and fixes bugs in the provided code.
+   - **Category**: Coding
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/4426/4426267.png)
+   - **Slug**: code-bug-detector
+
+### Marketing Tools
+
+1. **Tagline Generator**
+   - **Description**: Generates catchy taglines for your business or product based on the name and description.
+   - **Category**: Marketing
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/2178/2178616.png)
+   - **Slug**: tagline-generator
+
+2. **Product Description Generator**
+   - **Description**: Creates keyword-rich product descriptions for e-commerce platforms.
+   - **Category**: Marketing
+   - **Icon**: ![Icon](https://cdn-icons-png.flaticon.com/128/679/679922.png)
+   - **Slug**: product-description
+
   
 ## Tech Stack
 
