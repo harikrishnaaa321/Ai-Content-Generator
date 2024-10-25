@@ -10,7 +10,7 @@ The **AI Content Generator** is a tool designed to generate high-quality content
 - [Usage](#usage)
 - [API Integration](#api-integration)
 - [Payment Integration](#payment-integration)
-- [Screenshots](#check-this-out)
+- [check this out](#check-this-out)
 
 ## Features
 
