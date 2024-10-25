@@ -210,14 +210,26 @@ The app uses **Razorpay** for processing payments. Premium users can make secure
 Add screenshots of your app here to give users a preview of the AI Content Generator's UI and features.
 
 1. **Home Page**: Display of the templates and token limits.
+   
+                 Show user-specific token limits (free and premium users).
+   
    ![homepage](https://github.com/user-attachments/assets/fb1e0e23-e959-4fc9-b1da-819599c1ebc1)
+
+
 3. **History**: Track user token usage over time.
-                Display the current status of their account (e.g., number of tokens remaining)..
+   
+                Display the current status of their account (e.g., number of tokens remaining)
+   
       ![history](https://github.com/user-attachments/assets/3c9379e7-3ac1-4f23-8ab5-c365ae4f7914)
-5. **Content Generation**:Allow users to select the templates .
+
+3. **Content Generation**:Allow users to select the templates .
+   
                           Show an interface for inputting data and generating content.
      
    <img width="944" alt="hashtag generator" src="https://github.com/user-attachments/assets/4d769663-ec72-4499-a465-1017a48cad08">
 
-7. **Payment Gateway**: Razorpay integration for upgrading accounts.
+4. **Payment Gateway**: Integrate with Razorpay for seamless payment processing. 
+
+                      Include account upgrade options with pricing information.
+   
    <img width="959" alt="payment_gateway" src="https://github.com/user-attachments/assets/1035ac86-406c-4332-a2e5-67135311f8f6">
